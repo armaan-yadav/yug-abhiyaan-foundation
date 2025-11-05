@@ -368,7 +368,12 @@ const EditContentPage = () => {
         const res = await uploadToCloudinary(file, (p) =>
           setThumbnailUploadProgress(p)
         );
-        setThumbnailUrl(((res.secure_url ?? res.url) as string | undefined) ?? null);
+        const secure = (res.secure_url ?? res.url) as string | undefined;
+        setThumbnailUrl(secure ?? null);
+        if (secure) {
+          setThumbnailPreview(secure);
+          setThumbnailIsObjectUrl(false);
+        }
         setThumbnailUploadProgress(null);
         toast.success("Thumbnail uploaded successfully!");
       } catch (error) {
@@ -419,12 +424,15 @@ const EditContentPage = () => {
                 )
               );
             });
+            const uploaded = (res.secure_url ?? res.url) as string | undefined;
             setGalleryFiles((prev) =>
               prev.map((f) =>
                 f.id === mediaFile.id
                   ? {
                       ...f,
-                      uploadedUrl: res.secure_url || res.url,
+                      uploadedUrl: uploaded,
+                      preview: uploaded ?? f.preview,
+                      isObjectUrl: uploaded ? false : f.isObjectUrl,
                       uploadStatus: "completed",
                       uploadProgress: 100,
                     }

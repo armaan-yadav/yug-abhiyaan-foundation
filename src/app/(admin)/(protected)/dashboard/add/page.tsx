@@ -248,7 +248,13 @@ const AddContentPage = () => {
       try {
         setThumbnailUploadProgress(0);
         const res = await uploadToCloudinary(file, (p) => setThumbnailUploadProgress(p));
-  setThumbnailUrl((res.secure_url ?? res.url) ?? null);
+        const secure = (res.secure_url ?? res.url) as string | undefined;
+        setThumbnailUrl(secure ?? null);
+        // switch preview to the hosted secure URL so the UI shows the final asset
+        if (secure) {
+          setThumbnailPreview(secure);
+          setThumbnailIsObjectUrl(false);
+        }
         setThumbnailUploadProgress(null);
         toast.success("Thumbnail uploaded successfully!");
       } catch (error) {
@@ -296,12 +302,16 @@ const AddContentPage = () => {
               setGalleryFiles((prev) => prev.map((f) => (f.id === mediaFile.id ? { ...f, uploadProgress: p } : f)));
             });
 
+            const uploaded = (res.secure_url ?? res.url) as string | undefined;
             setGalleryFiles((prev) =>
               prev.map((f) =>
                 f.id === mediaFile.id
                   ? {
                       ...f,
-                      uploadedUrl: (res.secure_url ?? res.url) as string | undefined,
+                      uploadedUrl: uploaded,
+                      // replace local preview with hosted secure URL so it persists
+                      preview: uploaded ?? f.preview,
+                      isObjectUrl: uploaded ? false : f.isObjectUrl,
                       uploadStatus: "completed",
                       uploadProgress: 100,
                     }
