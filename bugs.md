@@ -1,0 +1,1 @@
+![in mobile layout; the table row overflows when the title is too long](image.png)

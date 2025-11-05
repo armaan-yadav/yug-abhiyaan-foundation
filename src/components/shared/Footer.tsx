@@ -1,13 +1,12 @@
-import React from "react";
-import { Mail, Phone, Globe, MapPin, FacebookIcon } from "lucide-react";
-import logo from "../../assets/logos/logo_wo_text.png";
+import { Globe, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import logo from "../../assets/logos/logo_wo_text.png";
 import SocialStrip from "./SocialStrip";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#222222] text-white py-16 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-brand-bg text-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left Section - Brand */}
@@ -31,7 +30,7 @@ const Footer = () => {
                   FOUNDATION
                 </h3>
                 <p className="text-[#999] font-medium mt-2">
-                  Better Life for People
+                  Better Life for Souls
                 </p>
               </div>
             </Link>

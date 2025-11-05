@@ -1,7 +1,10 @@
 import { facebook, instagram, twitter } from "@/constants";
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Twitter } from "lucide-react";
 
-export default function SocialStrip() {
+export default function SocialStrip({
+  hoverEffect = true,
+  color = "gray-400",
+}) {
   const socials = [
     { icon: Facebook, href: facebook },
     { icon: Twitter, href: twitter },
@@ -20,7 +23,11 @@ export default function SocialStrip() {
             rel="noopener noreferrer"
             className="p-2 rounded-full hover:scale-110 cursor-pointer transition"
           >
-            <Icon className="w-5 h-5 text-gray-600 hover:text-[#F8B864] transition" />
+            <Icon
+              className={`w-5 h-5 text-${color} ${
+                hoverEffect ? "hover:text-[#F8B864]" : ""
+              } transition`}
+            />
           </a>
         );
       })}
