@@ -6,6 +6,7 @@ import { CalendarDays } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
 interface ContentItem {
   id: string;
@@ -184,3 +185,30 @@ const page = async ({ params }: { params: { slug: string } }) => {
 };
 
 export default page;
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const slug = params.slug;
+  try {
+    const contentData = await getDocBySlug("content", slug);
+    if (!contentData) return { title: `${slug}` };
+
+    const title = contentData.title ?? `Our Work — ${slug}`;
+    const description =
+      contentData.description?.slice(0, 160) ||
+      "Stories and projects from Yug Abhiyaan Foundation.";
+
+    const metadata: Metadata = {
+      title,
+      description,
+      openGraph: {
+        title,
+        description,
+        images: contentData.thumbnailUrl ? [contentData.thumbnailUrl] : undefined,
+      },
+    };
+
+    return metadata;
+  } catch (err) {
+    return { title: `${params.slug}` };
+  }
+}

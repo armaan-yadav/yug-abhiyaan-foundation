@@ -1,4 +1,5 @@
 import StatsStrip from "@/components/shared/StatsStrip";
+import type { Metadata } from "next";
 import Slider from "@/components/slider/Slider";
 import { Button } from "@/components/ui/button";
 import { BookA, Heart, TreeDeciduous } from "lucide-react";
@@ -230,3 +231,16 @@ export default function Home() {
     </div>
   );
 }
+
+// SEO metadata for the homepage
+export const metadata: Metadata = {
+  title: "Yug Abhiyaan Foundation — Community, Education & Outreach",
+  description:
+    "Yug Abhiyaan Foundation works to uplift communities via education, animal rescue, tree planting and social welfare programs.",
+  openGraph: {
+    title: "Yug Abhiyaan Foundation",
+    description:
+      "Join us to support education, environment and animal rescue initiatives that change lives.",
+    siteName: "Yug Abhiyaan Foundation",
+  },
+};

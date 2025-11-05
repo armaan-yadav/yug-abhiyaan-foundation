@@ -15,6 +15,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import type { Metadata } from "next";
 import { toast } from "sonner";
 
 // Define the ContentItem interface
@@ -418,3 +419,7 @@ const Page = () => {
 };
 
 export default Page;
+
+// Metadata for this route is provided via a server `head.tsx` to support this
+// file being a client component (uses React hooks). See `head.tsx` alongside
+// this page for SEO tags.

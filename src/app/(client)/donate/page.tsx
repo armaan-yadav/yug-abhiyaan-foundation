@@ -1,4 +1,5 @@
 import React from "react";
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
@@ -92,3 +93,14 @@ const DonatePage = () => {
 };
 
 export default DonatePage;
+
+export const metadata: Metadata = {
+  title: "Donate | Yug Abhiyaan Foundation",
+  description:
+    "Support Yug Abhiyaan Foundation — your donations help fund education, rescue, and community programs.",
+  openGraph: {
+    title: "Donate — Yug Abhiyaan Foundation",
+    description:
+      "Make a contribution to support education, animal rescue, and community welfare programs.",
+  },
+};

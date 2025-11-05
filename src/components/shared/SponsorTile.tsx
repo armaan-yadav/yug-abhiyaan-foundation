@@ -25,8 +25,8 @@ const SponsorTile = () => {
             Our <span className="text-brand-light">Trusted</span> Partners
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Together with our amazing sponsors, we&apos;re making a difference in
-            communities worldwide
+            Together with our amazing sponsors, we&apos;re making a difference
+            in communities worldwide
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-brand-light to-brand-light/50 mx-auto mt-6 rounded-full"></div>
         </div>

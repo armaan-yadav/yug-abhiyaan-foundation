@@ -8,6 +8,17 @@ const nextConfig: NextConfig = {
     // NOTE: Prefer fixing lint problems long-term. Use this to unblock deploys.
     ignoreDuringBuilds: true,
   },
+  images: {
+    // Allow optimizing images hosted on Cloudinary (res.cloudinary.com)
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

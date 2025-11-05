@@ -140,8 +140,19 @@ export function LoginForm({
                 variant="outline"
                 className="w-full"
                 disabled={loading}
-                onClick={() => {
-                  signInWithGoogle();
+                onClick={async () => {
+                  try {
+                    setLoading(true);
+                    setError(null);
+                    await signInWithGoogle();
+                    // redirect after successful Google sign-in
+                    router.push("/dashboard");
+                  } catch (err) {
+                    console.error("Google sign-in error:", err);
+                    setError("Google sign-in failed. Please try again.");
+                  } finally {
+                    setLoading(false);
+                  }
                 }}
               >
                 Login with Google
