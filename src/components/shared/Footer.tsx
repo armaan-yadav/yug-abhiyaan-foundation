@@ -60,7 +60,7 @@ const Footer = () => {
               <div className="flex items-center space-x-4 group cursor-pointer">
                 <Phone className="w-5 h-5 text-[#F8B864]" />
                 <div className="flex-1">
-                  <p className="text-[#999] tgroup-hover:ext-gray-300 transition-colors duration-300">
+                  <p className="text-[#999] group-hover:text-gray-300 transition-colors duration-300">
                     +(91) 98242 53338
                   </p>
                 </div>
@@ -96,14 +96,18 @@ const Footer = () => {
               © 2025 Yug Abhiyaan Foundation
             </div>
 
-            {/* <div className="flex items-center space-x-6">
-              <button className="text-gray-400 hover:text-[#999] text-sm transition-colors duration-300">
-                Terms
-              </button>
-              <button className="text-gray-400 hover:text-[#999] text-sm transition-colors duration-300">
-                Report Problem
-              </button>
-            </div> */}
+            {/* Credits */}
+            <div className="text-gray-500 text-sm">
+              Developed by{" "}
+              <Link
+                href="https://www.armaanyadav.site"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#F8B864] hover:text-white transition-colors duration-300 font-medium"
+              >
+                Armaan Yadav
+              </Link>
+            </div>
           </div>
         </div>
       </div>
